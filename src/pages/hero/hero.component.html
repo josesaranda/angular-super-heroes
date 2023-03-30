@@ -1,0 +1,24 @@
+<mat-toolbar>
+  <button mat-icon-button [routerLink]="['/heroes']">
+    <mat-icon>home</mat-icon>
+  </button>
+  <span class="ml-4">Hero</span>
+  <span class="spacer"></span>
+</mat-toolbar>
+
+<div class="mat-elevation-z8 margin padding">
+  <form [formGroup]="formGroup" (submit)="onClickSubmit()">
+    <mat-form-field style="width: 100%">
+      <mat-label>Nombre</mat-label>
+      <input matInput formControlName="name" type="text" placeholder="Nombre" />
+      <mat-error *ngIf="formGroup.controls['name'].hasError('required')"
+        >Por favor, introduce un nombre</mat-error
+      >
+    </mat-form-field>
+    <div class="text-align-right">
+      <button mat-flat-button color="primary" [disabled]="formGroup.invalid">
+        Guardar
+      </button>
+    </div>
+  </form>
+</div>

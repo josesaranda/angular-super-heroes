@@ -1,0 +1,10 @@
+<div class="padding">
+  <h1>Aviso</h1>
+  <p>Eliminaras por completo a {{ name }}</p>
+  <div mat-dialog-actions class="text-align-right">
+    <button mat-button (click)="close()">Canelar</button>
+    <button class="ml-4" mat-flat-button color="accent" (click)="close(true)">
+      Eliminar
+    </button>
+  </div>
+</div>
