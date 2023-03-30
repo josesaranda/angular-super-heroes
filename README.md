@@ -1,27 +1,53 @@
-# SuperHeroes
+# angular-super-heroes
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.4.
+This is a project made for fun with Angular, Typescript, Scss
 
-## Development server
+## Requirements
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- nodejs v16 installed
 
-## Code scaffolding
+## Scripts
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- `npm install` Install all needed dependencies
+- `npm test` Run all tests
+- `npm start` Run project in development mode
+- `npm run build` Generates distribution files
 
-## Build
+## Notes
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Create a service which is going to store all the information and it has to:
 
-## Running unit tests
+[√] get all super heroes  
+[√] get just one hero by id  
+[√] get all heroes that match with the given name  
+[√] update a hero  
+[√] delete a hero  
+[√] create a hero  
+[√] create unit tests for this service  
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Create a component which will be able to:
 
-## Running end-to-end tests
+[√] show a paginated list of heroes where will appear two buttons with the text "Editar" and "Borrar"  
+[√] show an input for searching heroes by the given text  
+[√] show an empty form when pressing "Añadir"  
+[√] show confirmation dialog when user clicks on "Borrar"  
+[√] delete hero when user clicks on "Borrar" inside the dialog  
+[√] create unit tests for this component  
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+Addionataly:
 
-## Further help
+[√] Information should be stored inside service  
+[√] use good practices  
+[√] use angular material  
+[√] use routes and navigation  
+[] use docker somehow  
+[] use interceptor for showing a loading element  
+[√] use a directive to make edit field value uppercase (used scss instead)  
+[] use mockserver somehow  
+[√] communication between components  
+[√] use reactive programming  
+[√] use lambdas  
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Extra:
+
+[√] add pipeline and run build and test procces  
