@@ -12,6 +12,21 @@ This is a project made for fun with Angular, Typescript, Scss
 - `npm test` Run all tests
 - `npm start` Run project in development mode
 - `npm run build` Generates distribution files
+- `npm run start:mockserver` Run mockserver in port 8080
+
+#### Scripts notes
+
+To make angular client to call mockserver endpoints, please go to `environments/environment.development.ts` and set `baseURL` value to `http://localhost:8080`
+**Make sure** you're running both process `npm start` and `npm run start:mockserver`
+
+#### Running super-heroes-app using docker
+
+- `docker-compose up`
+
+or
+
+- `docker build -t super-heroes-app .`
+- `docker run --name super-heroes-container -p 80:80 super-heroes-app`
 
 ## Notes
 
@@ -23,7 +38,7 @@ Create a service which is going to store all the information and it has to:
 [x] update a hero  
 [x] delete a hero  
 [x] create a hero  
-[x] create unit tests for this service  
+[x] create unit tests for this service
 
 Create a component which will be able to:
 
@@ -32,7 +47,7 @@ Create a component which will be able to:
 [x] show an empty form when pressing "Añadir"  
 [x] show confirmation dialog when user clicks on "Borrar"  
 [x] delete hero when user clicks on "Borrar" inside the dialog  
-[x] create unit tests for this component  
+[x] create unit tests for this component
 
 Addionataly:
 
@@ -40,14 +55,14 @@ Addionataly:
 [x] use good practices  
 [x] use angular material  
 [x] use routes and navigation  
-[ ] use docker somehow  
+[x] use docker somehow  
 [ ] use interceptor for showing a loading element  
 [x] use a directive to make edit field value uppercase (used scss instead)  
-[ ] use mockserver somehow  
+[x] use mockserver somehow  
 [x] communication between components  
 [x] use reactive programming  
-[x] use lambdas  
+[x] use lambdas
 
 Extra:
 
-[x] add pipeline and run build and test procces  
+[x] add pipeline and run build and test procces
