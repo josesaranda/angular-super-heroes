@@ -17,6 +17,11 @@ const routes: Routes = [
     loadChildren: () =>
       import("@pages/hero/hero.module").then((m) => m.HeroModule),
   },
+  {
+    path: "**",
+    redirectTo: "heroes",
+    pathMatch: "full",
+  },
 ];
 
 @NgModule({
