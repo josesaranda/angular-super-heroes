@@ -3,7 +3,6 @@ import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { HeroesDataAccessService } from "@services/heroes-data-access.service";
 import { HeroesService } from "@services/heroes.service";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
@@ -16,7 +15,7 @@ import { AppComponent } from "./app.component";
     HttpClientModule,
     BrowserAnimationsModule,
   ],
-  providers: [HeroesService, HeroesDataAccessService],
+  providers: [HeroesService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
