@@ -12,7 +12,7 @@ import { MatSnackBar } from "@angular/material/snack-bar";
 import { MatSort } from "@angular/material/sort";
 import { MatTableDataSource } from "@angular/material/table";
 import { DeleteDialogComponent } from "@components/delete-dialog/delete-dialog.component";
-import { Hero } from "@services/heroes-data-access.service";
+import { Hero } from "@services/hero.interface";
 import { HeroesService } from "@services/heroes.service";
 import { switchMap } from "rxjs";
 

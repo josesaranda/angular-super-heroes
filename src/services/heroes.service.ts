@@ -1,12 +1,27 @@
+import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
-import { Hero, HeroesDataAccessService } from "./heroes-data-access.service";
+import { environment } from "../environments/environment";
+import { Hero } from "./hero.interface";
+import { HeroesDataAccessHttpService } from "./heroes-data-access-http.service";
+import { HeroesDataAccessInterface } from "./heroes-data-access.interface";
+import { HeroesDataAccessService } from "./heroes-data-access.service";
 
 @Injectable({
   providedIn: "root",
 })
 export class HeroesService {
-  constructor(private heroesDataAccessService: HeroesDataAccessService) {}
+  heroesDataAccessService: HeroesDataAccessInterface;
+
+  constructor(private readonly httpClient: HttpClient) {
+    if (environment.baseURL) {
+      this.heroesDataAccessService = new HeroesDataAccessHttpService(
+        this.httpClient
+      );
+    } else {
+      this.heroesDataAccessService = new HeroesDataAccessService();
+    }
+  }
 
   getAll(name?: string): Observable<Hero[]> {
     return this.heroesDataAccessService.getAll(name);

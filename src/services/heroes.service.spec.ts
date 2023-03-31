@@ -1,61 +1,57 @@
-import { of } from "rxjs";
-import { instance, mock, verify, when } from "ts-mockito";
-import { HeroesDataAccessService } from "./heroes-data-access.service";
+import { HttpClient } from "@angular/common/http";
+import { instance, mock } from "ts-mockito";
 import { HeroesService } from "./heroes.service";
 
 describe("HeroesService", () => {
-  const mockedHeroesDataAccessService = mock(HeroesDataAccessService);
-  const heroesService = new HeroesService(
-    instance(mockedHeroesDataAccessService)
-  );
+  const heroesService = new HeroesService(instance(mock(HttpClient)));
 
   it("Should be defined", () => {
     expect(heroesService).toBeDefined();
+    expect(heroesService.heroesDataAccessService).toBeDefined();
   });
 
   describe("#getAll", () => {
     it("Should call to heroes data access get all", () => {
-      when(mockedHeroesDataAccessService.getAll(undefined)).thenReturn(of([]));
+      //@ts-ignore
+      const spied = jest.spyOn(heroesService.heroesDataAccessService, "getAll");
       heroesService.getAll().subscribe();
-      verify(mockedHeroesDataAccessService.getAll(undefined)).once();
+      expect(spied).toHaveBeenCalled();
     });
   });
 
   describe("#getOne", () => {
     it("Should call to heroes data access get one", () => {
-      when(mockedHeroesDataAccessService.getOne("1")).thenReturn(
-        of({ id: "1", name: "spiderman" })
-      );
+      //@ts-ignore
+      const spied = jest.spyOn(heroesService.heroesDataAccessService, "getOne");
       heroesService.getOne("1").subscribe();
-      verify(mockedHeroesDataAccessService.getOne("1")).once();
+      expect(spied).toHaveBeenCalled();
     });
   });
 
   describe("#createOne", () => {
     it("Should call to heroes data access create one", () => {
-      when(mockedHeroesDataAccessService.createOne("spiderman")).thenReturn(
-        of({ id: "1", name: "spiderman" })
-      );
+      //@ts-ignore
+      const spied = jest.spyOn(heroesService.heroesDataAccessService, "createOne");
       heroesService.createOne("spiderman").subscribe();
-      verify(mockedHeroesDataAccessService.createOne("spiderman")).once();
+      expect(spied).toHaveBeenCalled();
     });
   });
 
   describe("#updateOne", () => {
     it("Should call to heroes data access update one", () => {
-      when(
-        mockedHeroesDataAccessService.updateOne("1", "spiderman")
-      ).thenReturn(of({ id: "1", name: "spiderman" }));
+      //@ts-ignore
+      const spied = jest.spyOn(heroesService.heroesDataAccessService, "updateOne");
       heroesService.updateOne("1", "spiderman").subscribe();
-      verify(mockedHeroesDataAccessService.updateOne("1", "spiderman")).once();
+      expect(spied).toHaveBeenCalled();
     });
   });
 
   describe("#deleteOne", () => {
     it("Should call to heroes data access delete one", () => {
-      when(mockedHeroesDataAccessService.deleteOne("1")).thenReturn(of(true));
+      //@ts-ignore
+      const spied = jest.spyOn(heroesService.heroesDataAccessService, "deleteOne");
       heroesService.deleteOne("1").subscribe();
-      verify(mockedHeroesDataAccessService.deleteOne("1")).once();
+      expect(spied).toHaveBeenCalled();
     });
   });
 });

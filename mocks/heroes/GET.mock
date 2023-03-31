@@ -1,0 +1,23 @@
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+Access-Control-Allow-Origin: *
+
+[{
+  "id" : "random-id-1",
+  "name": "superman"
+},{
+  "id" : "random-id-2",
+  "name": "batman"
+},{
+  "id" : "random-id-3",
+  "name": "spiderman"
+},{
+  "id" : "random-id-4",
+  "name": "super-hero"
+},{
+  "id" : "random-id-5",
+  "name": "waterman"
+},{
+  "id" : "random-id-6",
+  "name": "fireman"
+}]

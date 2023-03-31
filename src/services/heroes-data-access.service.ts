@@ -1,16 +1,10 @@
 import { Injectable } from "@angular/core";
 import { Observable, of } from "rxjs";
 import { v4 } from "uuid";
+import { Hero } from "./hero.interface";
+import { HeroesDataAccessInterface } from "./heroes-data-access.interface";
 
-export interface Hero {
-  id: string;
-  name: string;
-}
-
-@Injectable({
-  providedIn: "root",
-})
-export class HeroesDataAccessService {
+export class HeroesDataAccessService implements HeroesDataAccessInterface {
   heroes: Hero[] = [
     { id: "0c42d7cb-d452-484c-831e-2fab38e09e12", name: "superman" },
     { id: "d6488caa-c03e-4248-a800-567cf33ab9e3", name: "spiderman" },
