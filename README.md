@@ -10,6 +10,7 @@ This is a project made for fun with Angular, Typescript, Scss
 
 - `npm install` Install all needed dependencies
 - `npm test` Run all tests
+- `npm run test:coverage` Run all tests with coverage
 - `npm start` Run project in development mode
 - `npm run build` Generates distribution files
 - `npm run start:mockserver` Run mockserver in port 8080

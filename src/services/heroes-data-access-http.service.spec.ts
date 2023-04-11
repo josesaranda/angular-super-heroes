@@ -1,6 +1,14 @@
 import { HttpClient } from "@angular/common/http";
 import { of } from "rxjs";
-import { deepEqual, instance, mock, verify, when } from "ts-mockito";
+import {
+  anything,
+  deepEqual,
+  instance,
+  mock,
+  reset,
+  verify,
+  when,
+} from "ts-mockito";
 import { HeroesDataAccessHttpService } from "./heroes-data-access-http.service";
 
 describe("HeroesDataAccessHttpService", () => {
@@ -8,6 +16,10 @@ describe("HeroesDataAccessHttpService", () => {
   const heroesDataAccessService = new HeroesDataAccessHttpService(
     instance(mockedHttpClient)
   );
+
+  afterEach(() => {
+    reset(mockedHttpClient);
+  });
 
   it("Should be defined", () => {
     expect(heroesDataAccessService).toBeDefined();
@@ -32,6 +44,22 @@ describe("HeroesDataAccessHttpService", () => {
       heroesDataAccessService.getAll().subscribe((result) => {
         expect(result).toEqual(expectedResult);
         verify(mockedHttpClient.get("/heroes", undefined)).once();
+        done();
+      });
+    });
+
+    it("Should get all heroes filtered by name", (done) => {
+      const expectedResult = [
+        { id: "0c42d7cb-d452-484c-831e-2fab38e09e12", name: "superman" },
+        { id: "d6488caa-c03e-4248-a800-567cf33ab9e3", name: "spiderman" },
+        { id: "14a129b5-1c04-4be2-baa0-0832a46bb5d1", name: "batman" },
+      ];
+      when(mockedHttpClient.get("/heroes", anything())).thenReturn(
+        of(expectedResult as any)
+      );
+      heroesDataAccessService.getAll("man").subscribe((result) => {
+        expect(result).toEqual(expectedResult);
+        verify(mockedHttpClient.get("/heroes", anything())).once();
         done();
       });
     });
@@ -107,16 +135,21 @@ describe("HeroesDataAccessHttpService", () => {
   });
 
   describe("#deleteOne", () => {
-    const expectedResult = { success: true };
-    when(
-      mockedHttpClient.delete("/heroes/0c42d7cb-d452-484c-831e-2fab38e09e12")
-    ).thenReturn(of(expectedResult));
     it("Should delete a hero", (done) => {
+      const expectedResult = { success: true };
+      when(
+        mockedHttpClient.delete("/heroes/0c42d7cb-d452-484c-831e-2fab38e09e12")
+      ).thenReturn(of(expectedResult));
+
       heroesDataAccessService
         .deleteOne("0c42d7cb-d452-484c-831e-2fab38e09e12")
         .subscribe((result) => {
           expect(result).toBeTruthy();
-          verify(mockedHttpClient.delete("/heroes/0c42d7cb-d452-484c-831e-2fab38e09e12")).once()
+          verify(
+            mockedHttpClient.delete(
+              "/heroes/0c42d7cb-d452-484c-831e-2fab38e09e12"
+            )
+          ).once();
           done();
         });
     });
