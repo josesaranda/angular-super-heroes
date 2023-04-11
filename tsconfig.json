@@ -24,7 +24,8 @@
     "paths": {
       "@pages/*": ["./src/pages/*"],
       "@components/*": ["./src/components/*"],
-      "@services/*": ["./src/services/*"]
+      "@services/*": ["./src/services/*"],
+      "@directives/*": ["./src/directives/*"]
     }
   },
   "angularCompilerOptions": {

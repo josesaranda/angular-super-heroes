@@ -10,6 +10,7 @@ import { MatSnackBarModule } from "@angular/material/snack-bar";
 import { MatToolbarModule } from "@angular/material/toolbar";
 import { HeroComponent } from "./hero.component";
 import { HeroRoutingModule } from "./hero.routing";
+import { UppercaseModule } from "@directives/uppercase/uppercase.module";
 
 @NgModule({
   imports: [
@@ -23,6 +24,7 @@ import { HeroRoutingModule } from "./hero.routing";
     MatButtonModule,
     MatSnackBarModule,
     HeroRoutingModule,
+    UppercaseModule,
   ],
   declarations: [HeroComponent],
 })

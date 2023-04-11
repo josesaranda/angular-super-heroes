@@ -10,7 +10,7 @@
   <form [formGroup]="formGroup" (submit)="onClickSubmit()">
     <mat-form-field style="width: 100%">
       <mat-label>Nombre</mat-label>
-      <input matInput formControlName="name" type="text" placeholder="Nombre" />
+      <input matInput formControlName="name" type="text" placeholder="Nombre" uppercase />
       <mat-error *ngIf="formGroup.controls['name'].hasError('required')"
         >Por favor, introduce un nombre</mat-error
       >
